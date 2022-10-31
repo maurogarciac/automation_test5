@@ -23,29 +23,26 @@ public class MainPageTest {
 
     @BeforeMethod
     public void setUp() {
-        open("https://www.jetbrains.com/");
+        open("https://www.booking.com/");
     }
 
     @Test
-    public void search() {
-        mainPage.searchButton.click();
-
-        $("[data-test='search-input']").sendKeys("Selenium");
-        $("button[data-test='full-search-button']").click();
-
-        $("input[data-test='search-input']").shouldHave(attribute("value", "Selenium"));
+    public void inputPlace() {
+        mainPage.searchBox.sendKeys("Buenos Aires");
+        $("li[data-label='Buenos Aires, Argentina']").click();
+        mainPage.searchBox.shouldHave(attribute("value", "Buenos Aires, Argentina"));
     }
 
     @Test
     public void toolsMenu() {
-        mainPage.toolsMenu.click();
+        //mainPage.toolsMenu.click();
 
         $("div[data-test='main-submenu']").shouldBe(visible);
     }
 
     @Test
     public void navigationToAllTools() {
-        mainPage.seeAllToolsButton.click();
+        //mainPage.seeAllToolsButton.click();
 
         $("#products-page").shouldBe(visible);
 
