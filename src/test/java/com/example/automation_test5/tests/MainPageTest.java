@@ -1,24 +1,16 @@
-package com.example.automation_test5;
+package com.example.automation_test5.tests;
 
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.logevents.SelenideLogger;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.annotations.*;
 
-import static org.testng.Assert.*;
+import com.example.automation_test5.pages.MainPage;
 
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.*;
+import static org.testng.Assert.*;
 
 public class MainPageTest {
     MainPage mainPage = new MainPage();
 
     @BeforeClass
     public static void setUpAll() {
-        Configuration.browserSize = "1280x800";
-        SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
     @BeforeMethod
@@ -28,8 +20,8 @@ public class MainPageTest {
 
     @Test
     public void inputPlace() {
-        mainPage.searchBox.sendKeys("Buenos Aires");
-        $("li[data-label='Buenos Aires, Argentina']").click();
+        mainPage.sendKeys("Buenos Aires");
+        "li[data-label='Buenos Aires, Argentina']".click();
         mainPage.searchBox.shouldHave(attribute("value", "Buenos Aires, Argentina"));
     }
 
