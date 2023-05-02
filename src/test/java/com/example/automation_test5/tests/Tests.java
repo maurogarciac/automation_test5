@@ -1,12 +1,11 @@
 package com.example.automation_test5.tests;
 
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 import com.example.automation_test5.pages.MainPage;
-
-import static org.testng.Assert.*;
 
 import org.openqa.selenium.WebDriver;
 
@@ -25,7 +24,7 @@ public class Tests {
     @BeforeMethod
     public void setUp() {
         driver = new ChromeDriver();
-        MainPage mainPage = new MainPage(driver);
+        this.mainPage = new MainPage(driver);
     }
  
     @AfterTest

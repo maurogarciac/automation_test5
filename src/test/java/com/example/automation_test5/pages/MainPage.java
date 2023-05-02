@@ -1,9 +1,13 @@
 package com.example.automation_test5.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 //import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -18,9 +22,9 @@ public class MainPage {
 
     @FindBy(id = "ss")
     protected WebElement input;
-    @FindBy(className = "sb-searchbox__button ")
+    @FindBy(className = "sb-searchbox__button")
     protected WebElement submit;
-    @FindBy(css = "li")
+    @FindBy(css = ".sb-destination .c-autocomplete__list")
     protected WebElement dropdown;
 
     public MainPage(WebDriver driver) {
@@ -32,10 +36,16 @@ public class MainPage {
         driver.get(URL);
     }
 
-    public String search(String text, String dropdownValue) {
+    public void search(String text, String dropdownValue) {
+        //add a wait
         this.input.sendKeys(text);
-        return dropdown.getAttribute("data-label = '" + dropdownValue +"'");
+        //add another wait
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOfNestedElementsLocatedBy(dropdown,
+                By.cssSelector("[data-label = '" + dropdownValue +"']"))).get(0).click();
     }
+
+
     /*
         public SearchResultPage search(String text) {
         this.input.sendKeys(text);

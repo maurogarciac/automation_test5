@@ -2,9 +2,9 @@ cada parte de la pagina seria una feature diferetne
 
 
 
-1. Calendario a LocalDate - AutomationTest2
+1. Calendario a LocalDate - AutomationTest2 [X]
 
-2. Tests booking testng
+2. Tests booking testng 
 
 3. Citrix
 
